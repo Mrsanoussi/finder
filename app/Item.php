@@ -10,4 +10,9 @@ class Item extends Model
     {
         return $this->belongsToMany('App\Attribute');
     }
+
+    public function brands()
+    {
+        return $this->belongsToMany('App\Brand');
+    }
 }
