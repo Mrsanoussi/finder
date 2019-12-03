@@ -6,16 +6,22 @@
 
 
 @section('side')
-<div class="col-sm-4 col-md-1 d-flex flex-row card">
+<div class="col-sm-6 col-md-2 d-flex flex-row float-sm-left mt-4 card ml-4">
     <div class="filter">
-        <h3>Sportschool</h3>
             <ul>
+                <h3 class="m-1">Sportschool</h3>
                 @foreach($brand as $brand)
-                <li type="none"><a href="{{ route('index', ['brand' => $brand->name]) }}">{{ $brand->name }}</a></li>
+                <li type="none" class=""><a href="{{ route('index', ['brand' => $brand->name]) }}" class="btn btn-outline-primary m-1">{{ $brand->name }}</a></li>
+                @endforeach
+                <h3 class="m-1">Services</h3>
+                @foreach($attribute as $attribute)
+                <li type="none" class=""><a href="{{ route('index', ['attribute' => $attribute->name]) }}" class="btn btn-outline-primary m-1">{{ $attribute->name }}</a></li>
                 @endforeach
             </ul>
     </div>
 </div>
+
+
 @endsection
 
 @section('content')

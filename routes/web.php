@@ -19,4 +19,4 @@ Route::get('/', 'ItemsController@index')->name('index');
 
 Route::get('/app/show/{item}', 'ItemsController@show');
 
-Route::get('/search')
+//Route::get('/search')

@@ -18,13 +18,25 @@ class ItemsController extends Controller
             })->get();
             $brand = Brand::all();
         }else{
-            $item = Item::inRandomOrder()->take(8)->get();
+            $item = Item::inRandomOrder()->get();
             $brand = Brand::all();
+        }
+
+        if(request()->attribute){
+            $item = Item::with('attributes')->whereHas('attributes', function($query){
+                $query->where('name', request()->attribute);
+            })->get();
+            $attribute = Attribute::all();
+        }else{
+            $attribute = Attribute::all();
         }
 
         /*$item = Item::find(15);
         $item->brands()->attach(5);*/
 
+        /*$item = Item::find(15);
+        $item->attributes()->attach([1,2]);
+        
 
 
         //$item = Item::paginate(8);
@@ -37,6 +49,7 @@ class ItemsController extends Controller
         return view('index', [
             'item' => $item,
             'brand' => $brand,
+            'attribute' => $attribute,
             ]);
 
     }
