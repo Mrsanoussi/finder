@@ -68,7 +68,6 @@ $( ".category" ).click(function() {
             </div>
         </div>
     </div>
-    
     @endforeach
 </div>
 </div>

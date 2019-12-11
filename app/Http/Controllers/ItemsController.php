@@ -115,6 +115,8 @@ class ItemsController extends Controller
         $search = $request->search;
 // dump($search);
         $items = Brand::with('items')->where('id', '=',$search)->get();
+
+    
        
 
 
@@ -122,6 +124,6 @@ class ItemsController extends Controller
         //         $query->where('name', request()->search);
         //     })->get();
 
-        // dump($items);
+        dump($items);
     }
 }
