@@ -12,23 +12,28 @@ class BrandsTableSeeder extends Seeder
     public function run()
     {
         DB::table('brands')->insert([
-            'name' => 'Basicfit'
+            'name' => 'Basicfit',
+            'url' => 'https://www.basic-fit.com/'
         ]);
 
         DB::table('brands')->insert([
-            'name' => 'Fit for Free'
+            'name' => 'Fit for Free',
+            'url' => 'https://www.fitforfree.nl/'
         ]);
 
         DB::table('brands')->insert([
-            'name' => 'David Lloyd'
+            'name' => 'David Lloyd',
+            'url' => 'https://www.davidlloyd.nl/'
         ]);
 
         DB::table('brands')->insert([
-            'name' => 'The Fitness Lounge'
+            'name' => 'The Fitness Lounge',
+            'url' => 'https://www.thefitnesslounge.nl/'
         ]);
 
         DB::table('brands')->insert([
-            'name' => 'MyLife'
+            'name' => 'MyLife',
+            'url' => 'https://www.mylife.nl/'
         ]);
     }
 }

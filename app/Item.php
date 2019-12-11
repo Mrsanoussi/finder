@@ -13,6 +13,6 @@ class Item extends Model
 
     public function brands()
     {
-        return $this->belongsToMany('App\Brand');
+        return $this->belongsTo('App\Brand');
     }
 }

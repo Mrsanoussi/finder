@@ -18,5 +18,6 @@
 Route::get('/', 'ItemsController@index')->name('index');
 
 Route::get('/app/show/{item}', 'ItemsController@show');
+Route::get('/get/items', 'ItemsController@get');
 
 //Route::get('/search')
