@@ -24,7 +24,7 @@
 </div>
 -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="side col-sm-6 col-md-2 float-sm-left mt-4 card ml-4">
     <h3>Sportschool</h3>
     @foreach($item as $brands)
@@ -35,13 +35,24 @@
      </div>
     @endif
     @endforeach
-<script>
-
-$( ".category" ).click(function() {
     
+<script>
+//focust op de .category value en wacht op veranderingen
+$( ".category" ).click(function() {
+    //
      $.get( "/get/items", { search: $( this ).val() })
-    .done(function( data ) {
-        alert( "Data Loaded: " + data );
+    .done(function( data ) {   
+        var newData = data;
+        // var readyData = JSON.stringify(newData);
+        // $.each(newData, function(key, value){
+        //     newData += '<div class="">';
+        //     newData += '+newData.name+';
+        //     newData += '</div>';
+        // });
+        document.getElementById("resultblock").innerHTML = newData;
+
+        // document.getElementById("resultblock").innerHTML = readyData;
+        // console.log(readyData)
     });
 
 });
@@ -52,8 +63,10 @@ $( ".category" ).click(function() {
 @endsection
 
 @section('content')
+<div class="resultblock" id="resultblock"></div>
+
 @foreach($item->chunk(4) as $itemsChunk)
-<div class="resultblock">
+<div class="main-content">
 <div class="row mt-4 d-flex flex-row">
     @foreach($itemsChunk as $item)
     <div class="col-sm-6 col-md-3 d-flex flex-row resultblock" data-tag="{{ $item->brand_id }}">

@@ -109,21 +109,23 @@ class ItemsController extends Controller
     
     public function get(Request $request)
     {
- 
-      
-
+        //ontvangt search request
         $search = $request->search;
-// dump($search);
-        $items = Brand::with('items')->where('id', '=',$search)->get();
-
-    
-       
-
-
-        //    $items = Item::with('brands')->whereHas('brands', function($query){
-        //         $query->where('name', request()->search);
-        //     })->get();
+        //bepaald wat $brand is en pakt daar de items mee
+        $brands = Brand::with('items')->where('id', '=',$search)->get();
+        // voor elke $brands als $brand
+        foreach ($brands as $key => $brand) {
+           //maakt $items array in $brands array
+            foreach ($brands as $key => $brand) {
+                  $items[] = $brand['items'];
+            }
+        }
+        //stuurt $items terug naar de frontend als data
+        return response()->json([
+            'data' => $items,
+        ]);
 
         dump($items);
     }
+
 }
